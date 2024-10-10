@@ -1,0 +1,21 @@
+# Makefile para compilar o programa MPI
+
+CC = mpicc           # Compilador MPI
+CFLAGS = -Wall -O2   # Flags de compilação
+
+# Nome do arquivo de saída
+OUTPUT = spotify_processing_mpi
+
+# Arquivo fonte
+SRC = spotify_processing_mpi.c
+
+# Regra padrão
+all: $(OUTPUT)
+
+# Regra para compilar o programa
+$(OUTPUT): $(SRC)
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC)
+
+# Limpar arquivos gerados
+clean:
+	rm -f $(OUTPUT)

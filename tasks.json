@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar MPI",
+            "type": "shell",
+            "command": "make",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compila o programa usando o Makefile"
+        },
+        {
+            "label": "Executar MPI",
+            "type": "shell",
+            "command": "mpirun",
+            "args": [
+                "-np", "4",                   // Número de processos
+                "${workspaceFolder}/${input:programName}"  // Caminho do executável
+            ],
+            "group": "test",
+            "dependsOn": "Compilar MPI",
+            "problemMatcher": [],
+            "input": {
+                "type": "prompt",
+                "description": "Digite o nome do arquivo CSV",
+                "id": "programName"
+            }
+        }
+    ]
+}
